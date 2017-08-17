@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, EventEmitter} from '@angular/core';
 import { scaleLinear } from "d3-scale";
 
 @Component({
@@ -9,11 +9,12 @@ import { scaleLinear } from "d3-scale";
 export class SearchComponent {
 
 public searchTerm: String = "";
+public emitter: EventEmitter<String> = new EventEmitter();
 
   constructor() { }
 
   search(): void {
-    console.log(this.searchTerm);
+    this.emitter.emit(this.searchTerm);
   }
 
 }

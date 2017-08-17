@@ -5,6 +5,7 @@ export interface Issue {
 }
 
 interface Fields {
+    summary: string;
     issuelinks: Issuelink[];
 }
 

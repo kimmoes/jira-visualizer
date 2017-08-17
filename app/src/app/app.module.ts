@@ -8,6 +8,7 @@ import { UserStoryComponent } from './user-story/user-story.component';
 import { SearchComponent } from './search/search.component';
 import { Issue } from './common/model/issue.interface';
 import { Credentials } from './common/config/credentials';
+import { Properties } from './common/config/properties';
 
 import { UserStoryService } from './common/service/user-story.service';
 
@@ -25,7 +26,7 @@ import { AppRoutingModule } from './app-routing.module';
     UserStoryComponent,
     SearchComponent
   ],
-  providers: [UserStoryService, Credentials],
+  providers: [UserStoryService, Credentials, Properties],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

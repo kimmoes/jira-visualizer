@@ -7,7 +7,7 @@ import { UserStoryComponent } from './user-story/user-story.component';
 const routes: Routes = [
     { path: 'search', component: SearchComponent },
     { path: 'user-story/:id', component: UserStoryComponent },
-    { path: '', redirectTo: '/search', pathMatch: 'full' }
+    { path: '**', redirectTo: '/search', pathMatch: 'full' }
 ];
 
 @NgModule({

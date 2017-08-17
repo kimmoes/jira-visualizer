@@ -3,14 +3,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 import { Issue } from '../model/issue.interface';
 import { Credentials } from '../config/credentials';
+import { Properties } from '../config/properties';
 
 @Injectable()
 export class UserStoryService {
 
-  constructor(private http: HttpClient, private auth: Credentials) { }
+  constructor(private http: HttpClient, private auth: Credentials, private prop: Properties) { }
 
   getIssue(id: string): Observable<Issue> {
-    const url = `https://iciskm.atlassian.net/rest/api/latest/issue/${id}?fields=navigble,summary,issuelinks`;
+    const url = `${this.prop.jiraUrl}/rest/api/latest/issue/${id}?fields=navigble,summary,issuelinks`;
     const auth = this.getAuthHeaders();
     return this.http.get<Issue>(url, {
       headers: auth
