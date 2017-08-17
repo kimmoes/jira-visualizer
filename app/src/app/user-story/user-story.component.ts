@@ -23,7 +23,7 @@ export class UserStoryComponent implements OnInit {
     this.id.subscribe(
       id => this.getIssue(id)
     );
-    this.chart = d3.select("#rect");
+    this.chart = d3.select('#rect');
     this.draw();
   }
 
@@ -46,24 +46,22 @@ export class UserStoryComponent implements OnInit {
     let height = 200;
 
     let x = d3.scaleLinear().domain([0, data.length]).range([0, width]);
-    let y = d3.scaleLinear().domain([0, d3.max(data, function (datum) { return datum.books; })]).
+    let y = d3.scaleLinear().domain([0, d3.max(data, datum => datum.books)]).
       rangeRound([0, height]);
 
     this.chart.
-      append("svg:svg").
-      attr("width", width).
-      attr("height", height).
-      selectAll("text").
+      append('svg:svg').
+      attr('width', width).
+      attr('height', height).
+      selectAll('rect').
       data(data).
       enter().
-      append("svg:text").
-      attr("x", function (datum, index) { return x(index) + barWidth; }).
-      attr("y", function (datum) { return height - y(datum.books); }).
-      attr("dx", -barWidth / 2).
-      attr("dy", "1.2em").
-      attr("text-anchor", "middle").
-      text(function (datum) { return datum.books; }).
-      attr("fill", "white");
+      append('svg:rect').
+      attr('x', (datum, index) => x(index)).
+      attr('y', datum => height - y(datum.books)).
+      attr('height', datum => y(datum.books)).
+      attr('width', barWidth).
+      attr('fill', '#2d578b');
   }
 
 }
