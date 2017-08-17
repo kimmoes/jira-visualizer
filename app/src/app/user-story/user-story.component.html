@@ -1,3 +1,7 @@
-<h1>User story: {{ userStory?.key }} {{ userStory?.fields.summary }}</h1>
+<h1>{{ userStory?.key }} {{ userStory?.fields.summary }}</h1>
 
-<p *ngFor="let link of (userStory?.fields?.issuelinks)">{{ link.self }}</p>
+<ul>
+  <li *ngFor="let link of userStory?.fields.issuelinks">{{ link.self }}</li>
+</ul>
+
+<div id="rect"></div>

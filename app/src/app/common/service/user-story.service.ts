@@ -15,11 +15,7 @@ export class UserStoryService {
     const auth = this.getAuthHeaders();
     return this.http.get<Issue>(url, {
       headers: auth
-    }).map(
-      res => res
-      ).catch(
-      error => Observable.throw(error)
-      );
+    }).map(res => res).catch(error => Observable.throw(error));
   }
 
   private getAuthHeaders(): HttpHeaders {
