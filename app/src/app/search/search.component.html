@@ -1,0 +1,4 @@
+<form>
+  <input name="user-story-number" placeholder="User Story nummer" [ngModel]="searchTerm" (ngModelChange)="searchTerm = $event">
+  <input type="submit" value="Søg" (click)="search()">
+</form>
